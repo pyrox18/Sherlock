@@ -18,7 +18,7 @@ var Sherlock = (function() {
     years: "\\b(20\\d{2}|\\d{2}[6-9]\\d)\\b",
 
     // 5/12/2014
-    shortForm: /\b(0?[1-9]|1[0-2])\/([1-2]\d|3[0-1]|0?[1-9])\/?(\d{2,4})?\b/,
+    shortForm: /\b([1-2]\d|3[0-1]|0?[1-9])\/(0?[1-9]|1[0-2])\/?(\d{2,4})?\b/,
 
     // tue, tues, tuesday
     weekdaysStr: "\\b(sun|mon|tue(?:s)?|wed(?:nes)?|thu(?:rs?)?|fri|sat(?:ur)?)(?:day)?\\b",
@@ -240,11 +240,11 @@ var Sherlock = (function() {
         // if only 2 digits are given, assume years above 50 are in the 20th century, otherwise 21st century
         year += year > 50 ? 1900 : 2000;
       if (year) {
-        time.setFullYear(year, match[1] - 1, match[2]);
+        time.setFullYear(year, match[2] - 1, match[1]);
         time.hasYear = true;
       }
       else
-        time.setMonth(match[1] - 1, match[2]);
+        time.setMonth(match[2] - 1, match[1]);
       return match[0];
     } else if (match = str.match(patterns.oxtDays) || str.match(patterns.oxtDaysUK)) {
       switch (match[1].substr(0, 3)) {
