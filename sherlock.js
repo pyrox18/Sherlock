@@ -97,8 +97,8 @@ var Sherlock = (function() {
           bScore += 20;
         return bScore - aScore;
       })[0].trim();
-
-      if (match.length <= 2 && str.trim().length > 2)
+      
+      if (match.length <= 1 && str.trim().length > 2)
         matchConfidence = 0;
       else {
         matchConfidence = match.length;
